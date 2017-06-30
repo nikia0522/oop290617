@@ -5,7 +5,6 @@ import net.hanbit.oop.service.CalcService;
 import net.hanbit.oop.service.HelloService;
 import net.hanbit.oop.service.LeapYearService;
 import net.hanbit.oop.service.LoginService;
-import net.hanbit.oop.service.SSNService;
 import net.hanbit.oop.service.TaxService;
 public class Controller{
 	public static void main(String[] args) {
@@ -14,7 +13,7 @@ public class Controller{
 		TaxService s2=new TaxService();
 		LeapYearService s3=new LeapYearService();
 		LoginService s5=new LoginService();
-		SSNService s6=new SSNService();
+
 				
 		while (true) {
 			System.out.println("1.Calculator\t 2.Tax\t 3.Leap Year\t 4.Hello\t 5.로그인 \t 6.SSN\t 8. 0.End \n");
@@ -66,24 +65,8 @@ public class Controller{
 				break;
 				
 			case "6":
-				String ssn
-				String sYear=ssn.substring(0,2);
-				int year=Integer.parseInt(sYear);
-				char ch=ssn.charAt(7);
-				System.out.print("이름을 입력하세요\n");
-				String ssnname=s.next();
-				System.out.print("주민등록번호를 입력하세요\n");
-				String ssn=s.next();
-				
-				System.out.print("****************\n");
-				System.out.print("이름   나이    성별\n");
-				System.out.print("-----------------\\n");
-				String gender=s6.execute(ssnname);
-				System.out.print(String.format("&s   %d세    &s", ssnname, (17-year>=0)?18-year:(101-year)+17,gender));
-				break;
-				
+		
 			case "7":
-				System.out.print("###### 성적 랭킹 ######\n");
 				
 			case "8":
 			

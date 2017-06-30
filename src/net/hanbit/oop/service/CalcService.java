@@ -31,6 +31,7 @@ public class CalcService {
 		return result;
 	}
 	public String calcTime(String sec){
-
+		String result="";
+		return result;
 	}
 }
