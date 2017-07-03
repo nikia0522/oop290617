@@ -1,4 +1,4 @@
-package net.hanbit.oop.service;
+package net.hanbit.oop.serviceImpl;
 public class CalcService {
 	public String calcBMI(double height, double weight){
 		double bmi=weight/(height*height);

@@ -1,4 +1,4 @@
-package net.hanbit.oop.service;
+package net.hanbit.oop.serviceImpl;
 public class LoginService {
 	public static final String USER_ID="kim";
 	public static final String USER_PASS="1";

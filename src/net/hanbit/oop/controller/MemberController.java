@@ -1,13 +1,14 @@
 package net.hanbit.oop.controller;
 import java.util.Scanner;
 import net.hanbit.oop.domain.MemberBean;
-//RAM에서 돌려서 매치하는지 알아보는것
 import net.hanbit.oop.service.MemberService;
+import net.hanbit.oop.serviceImpl.MemberServiceImpl;
+
 import javax.swing.*;
 public class MemberController {  
 	public static void main(String[] args) {
 	    Scanner s = new Scanner(System.in);
-	    MemberService a= new MemberService(); 
+	    MemberService a= new MemberServiceImpl(); 
 	    MemberBean member=new MemberBean();
 	    while(true){
 	    	switch (JOptionPane.showInputDialog("0.end 1.회원가입 2.로그인")) {
