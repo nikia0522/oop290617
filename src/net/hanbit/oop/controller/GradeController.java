@@ -18,11 +18,8 @@ public class GradeController {
 				grade.setKor(Integer.parseInt(JOptionPane.showInputDialog("Kor:")));
 				grade.setEng(Integer.parseInt(JOptionPane.showInputDialog("Eng:")));
 				grade.setMath(Integer.parseInt(JOptionPane.showInputDialog("Math:")));
-				JOptionPane.showMessageDialog(null, a.calcAvg(grade)+(a.calcTotal(grade)));
+				//JOptionPane.showMessageDialog(null, (a.calcAvg(grade))+(a.calcTotal(grade)));
 			}
-			
-					
-
+		}
 	}
-}
 }
