@@ -69,13 +69,12 @@ public class AdminController {
 				break;
 				
 			case "6":
-				MemberBean enterId=service.findById(JOptionPane.showInputDialog("ID를 입력하세요."));
-				String id="";
-				if(enterId.length==0){
-					result="id가 없습니다";
-				}
-				String password=JOptionPane.showInputDialog("바꿀 비밀번호를 입력하세요");
-				//MemberBean[] members=service.updatePass(member);
+				MemberBean mem=new MemberBean();
+				String updateId=JOptionPane.showInputDialog("ID를 입력하세요.");
+				mem.setId(updateId);
+				String newPass=JOptionPane.showInputDialog("바꿀 비밀번호를 입력하세요");
+				mem.setPassword(newPass);
+				service.updatePass(mem);
 				JOptionPane.showMessageDialog(null, "비밀번호 변경 성공");
 			}
 		}

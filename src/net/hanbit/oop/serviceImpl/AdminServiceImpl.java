@@ -69,7 +69,12 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void updatePass(MemberBean member) {
+	public void updatePass(MemberBean bean) {
+		findById(bean.getId());
+		if(bean.getId().equals(member.getId())){
+			member.setPassword(bean.getPassword());
+		} 
+
 		
 	}
 }
