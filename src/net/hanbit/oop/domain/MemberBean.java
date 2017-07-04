@@ -27,4 +27,8 @@ public class MemberBean {
 	   public void setSsn (String ssn){
            	this.ssn =ssn;
 	   }
+	   public String toString(){
+		   return "회원 [id=" +id+" name="+name+" ssn="+ssn+"]";
+		
+	   }
 }
