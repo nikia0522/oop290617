@@ -7,28 +7,30 @@ public class AdminServiceImpl implements AdminService{
 	int count;
 	MemberBean member;
 	MemberBean[] list;
-	MemberBean[] nameList;
 	
 	//생성자: 인스턴스 변수의 이니셜라이징이 목적
 	//void가 없고 클래서 이름이랑 똑같아야함. 
-	public AdminServiceImpl(int limit){
+	public AdminServiceImpl(){
 		count=0;
-		list=new MemberBean[limit]; //지금은 정적이지만 countMembers()+5 <-동적으로 코딩
+		list=new MemberBean[count]; //지금은 정적이지만 countMembers()+5 <-동적으로 코딩
 		member=new MemberBean();
 
 	}
 	
 	@Override
 	public void addMember(MemberBean member) {
-		list[count]=member;
-		for(int i=0; i<(count+1);i++){
-			System.out.println(list[i].toString());
+		if(count==list.length){
+			MemberBean[] temp=new MemberBean[count+1];
+			System.arraycopy(list, 0, temp, 0, count);
+			list=temp;
 		}
-		count++;
+		list[count++]=member;
 	}
+	
 	@Override
 	public MemberBean[] getMembers() {		
 		return list;
+
 	}
 	
 	@Override
@@ -73,8 +75,17 @@ public class AdminServiceImpl implements AdminService{
 		findById(bean.getId());
 		if(bean.getId().equals(member.getId())){
 			member.setPassword(bean.getPassword());
-		} 
+		}
+	}
 
-		
+	@Override
+	public void deleteMember(String id) {
+		for(int i=0;i<count;i++){
+			if(id.equals(list[i].getId())){
+				list[i]=list[count-1];
+				list[count-1]=null;
+				count--;
+			}
+		}
 	}
 }

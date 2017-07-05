@@ -9,4 +9,5 @@ public interface AdminService {
 	public MemberBean findById(String id); //보안사항이 아니기때문에 public으로..
 	public MemberBean[] findByName(String name);
 	public void updatePass(MemberBean member);
+	public void deleteMember(String id);
 }

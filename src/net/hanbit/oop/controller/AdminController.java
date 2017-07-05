@@ -8,21 +8,17 @@ import net.hanbit.oop.serviceImpl.AdminServiceImpl;
 
 public class AdminController {
 	public static void main(String[] args){
-		String sCount=JOptionPane.showInputDialog("관리자님 총회원수를 입력해주세요");
-		int count=Integer.parseInt(sCount);
-		AdminService service=new AdminServiceImpl(count);
-		MemberBean member=null; //declaration
-		String sList="";
-		
+		AdminService service=new AdminServiceImpl();
+		MemberBean member=null; //declaration	
 		while(true){
-			switch(JOptionPane.showInputDialog("0.종료  1.회원추가  2.회원수  3.회원 목록  4.findById 5.findByName  6.update")){
+			switch(JOptionPane.showInputDialog("0.종료  1.회원추가  2.회원수  3.회원 목록  4.findById 5.findByName  6.update  7.delete")){
 			case "0":
 				JOptionPane.showMessageDialog(null,  "End");
 				return;
 	
 			case "1":
 				member=new MemberBean(); //초기화
-				String[] arr=(JOptionPane.showInputDialog("이름:/ID/Password/SSN")).split("/");
+				String[] arr=(JOptionPane.showInputDialog("이름/ID/Password/SSN")).split("/");
 				member.setName(arr[0]);
 				member.setId(arr[1]);
 				member.setPassword(arr[2]);
@@ -31,20 +27,20 @@ public class AdminController {
 				JOptionPane.showMessageDialog(null, "회원가입 성공");
 				break;
 				
-			case "2":				
-				service.countMembers();
-				JOptionPane.showMessageDialog(null, "회원 수:"+count);
+			case "2":							
+				JOptionPane.showMessageDialog(null,service.countMembers());
 				break;
 			
 			case "3":
 				MemberBean[] list=service.getMembers();
-				JOptionPane.showMessageDialog(null,"첫번째"+list[0]);
-				JOptionPane.showMessageDialog(null,"두번째"+list[1]);
-				JOptionPane.showMessageDialog(null, "세번째"+list[2]);
-				for(int i=0; i<list.length; i++){
+				String sList="";
+				//JOptionPane.showMessageDialog(null,"첫번째"+list[0]);
+				//JOptionPane.showMessageDialog(null,"두번째"+list[1]);
+				//JOptionPane.showMessageDialog(null, "세번째"+list[2]);
+				for(int i=0; i<service.countMembers(); i++){
 					sList+=list[i].toString()+"\n";
 				}
-				JOptionPane.showMessageDialog(null, "리스트"+sList);
+				JOptionPane.showMessageDialog(null, sList);
 				break;
 
 			case "4":
@@ -53,7 +49,7 @@ public class AdminController {
 				
 			case "5":
 				
-				 String name=JOptionPane.showInputDialog("조회할 이름을 입력");
+				/* String name=JOptionPane.showInputDialog("조회할 이름을 입력");
 				 MemberBean[] members=service.findByName(name);
 				 String result="";
 				 if(members.length==0){
@@ -63,9 +59,9 @@ public class AdminController {
 				 	result+=members[i].toString()+"\n";
 				 	}
 				 }
-				 JOptionPane.showMessageDialog(null, result);
+				 JOptionPane.showMessageDialog(null, result); */
 				
-				//JOptionPane.showMessageDialog(null, service.findByName((JOptionPane.showInputDialog(null, "찾으려는 이름을 입력하세요"))));
+				JOptionPane.showMessageDialog(null, service.findByName((JOptionPane.showInputDialog(null, "찾으려는 이름을 입력하세요"))));
 				break;
 				
 			case "6":
@@ -76,6 +72,20 @@ public class AdminController {
 				mem.setPassword(newPass);
 				service.updatePass(mem);
 				JOptionPane.showMessageDialog(null, "비밀번호 변경 성공");
+				
+				/*MemberBean mem=new MemberBean();
+				String foo=JOptionPane.showInputDialog("아이디/비번");
+				String[] idPw=foo.split("/");
+				MemberBean bar=new MemberBean();
+				mem.setId(idPw[0]);
+				mem.setPassword(idPw[1]);
+				service.updatePass(bar);
+				JOptionPane.showMessageDialog(null, "수정 완료");*/
+			
+			case"7":
+				String deleteId=JOptionPane.showInputDialog("지울 회원 ID를 입력하세요");
+				service.deleteMember(deleteId);
+				JOptionPane.showMessageDialog(null, "삭제 완료");
 			}
 		}
 	}
